@@ -1,0 +1,22 @@
+--- 
+name: Build the website
+
+on: push
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkuot@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn
+      
+      - name: Run tests
+        run: yarn tests
+
+      - name: Build
+        run: yarn build
